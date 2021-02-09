@@ -13,6 +13,9 @@
 		35053FB225D151BF00777E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35053FB025D151BF00777E35 /* Main.storyboard */; };
 		35053FB425D151C200777E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35053FB325D151C200777E35 /* Assets.xcassets */; };
 		35053FB725D151C200777E35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35053FB525D151C200777E35 /* LaunchScreen.storyboard */; };
+		35053FD025D15EFB00777E35 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35053FCE25D15EFB00777E35 /* TableViewCell.swift */; };
+		35053FD125D15EFB00777E35 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35053FCF25D15EFB00777E35 /* TableViewCell.xib */; };
+		35053FDC25D1673000777E35 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35053FDB25D1673000777E35 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		35053FB325D151C200777E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35053FB625D151C200777E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35053FB825D151C200777E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35053FCE25D15EFB00777E35 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		35053FCF25D15EFB00777E35 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		35053FDB25D1673000777E35 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		35053FA925D151BF00777E35 /* RedditPosts */ = {
 			isa = PBXGroup;
 			children = (
+				35053FBF25D1579B00777E35 /* UI */,
 				35053FAA25D151BF00777E35 /* AppDelegate.swift */,
 				35053FAC25D151BF00777E35 /* SceneDelegate.swift */,
 				35053FAE25D151BF00777E35 /* ViewController.swift */,
@@ -65,6 +72,24 @@
 				35053FB825D151C200777E35 /* Info.plist */,
 			);
 			path = RedditPosts;
+			sourceTree = "<group>";
+		};
+		35053FBF25D1579B00777E35 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				35053FC225D157EA00777E35 /* Models */,
+				35053FCE25D15EFB00777E35 /* TableViewCell.swift */,
+				35053FCF25D15EFB00777E35 /* TableViewCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		35053FC225D157EA00777E35 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35053FDB25D1673000777E35 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35053FB725D151C200777E35 /* LaunchScreen.storyboard in Resources */,
+				35053FD125D15EFB00777E35 /* TableViewCell.xib in Resources */,
 				35053FB425D151C200777E35 /* Assets.xcassets in Resources */,
 				35053FB225D151BF00777E35 /* Main.storyboard in Resources */,
 			);
@@ -138,8 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				35053FAF25D151BF00777E35 /* ViewController.swift in Sources */,
+				35053FD025D15EFB00777E35 /* TableViewCell.swift in Sources */,
 				35053FAB25D151BF00777E35 /* AppDelegate.swift in Sources */,
 				35053FAD25D151BF00777E35 /* SceneDelegate.swift in Sources */,
+				35053FDC25D1673000777E35 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
