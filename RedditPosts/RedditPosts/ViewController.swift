@@ -11,6 +11,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     var posts = [ChildData]()
     
     override func viewDidLoad() {
@@ -20,9 +22,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.dataSource            = self
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -33,15 +32,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
+        cell.avatarImage.layer.cornerRadius = 20
+//        cell.postImage.contentMode = .scaleToFill
         
-        cell.avatarImage.image = nil
-        cell.comments.text = "100"
-        cell.hours.text = "ten hours ago"
-        cell.postImage.image = nil
         
-        cell.avatarImage.layer.cornerRadius = 15
+        
         return cell
     }
+    
 }
 
 extension ViewController {
@@ -72,5 +70,12 @@ extension ViewController {
            }
         }
         task.resume()
+    }
+}
+
+extension UIImage {
+    func getImageRatio() -> CGFloat {
+        let widthRatio = CGFloat(self.size.width / self.size.height)
+        return widthRatio
     }
 }
