@@ -29,8 +29,23 @@ class TableViewCell: UITableViewCell {
     func fillCell(posts: ChildData) {
         titlePost.text = posts.title
         authorName.text = posts.author
+        comments.text = String(posts.num_comments)
+        
         postImage.downloaded(from: posts.url_overridden_by_dest)
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateFormat = "mm/dd/yyyy"
+        hours.text = formatter.string(from: date)
+        
+        
+        
+        
         }
+    
+    
     }
 
 

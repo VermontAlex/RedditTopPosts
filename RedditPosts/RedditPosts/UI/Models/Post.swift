@@ -33,6 +33,8 @@ struct ChildData: Codable {
     let author, title: String
     //High quality for PostImage
     let url_overridden_by_dest: String
+    let num_comments: Int
+    let created_utc: Int
     
     
     

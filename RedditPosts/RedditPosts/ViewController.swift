@@ -11,17 +11,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    
     var posts = [ChildData]()
+    let activityIndicatorView = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addActivityIndicator()
+        activityIndicatorView.startAnimating()
         downloadJSON()
         self.tableView.delegate              = self
         self.tableView.dataSource            = self
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -36,10 +36,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        cell.postImage.contentMode = .scaleToFill
         
         
-        
         return cell
     }
-    
 }
 
 extension ViewController {
@@ -57,20 +55,33 @@ extension ViewController {
                 let model = try decoder.decode(Post.self, from: dataResponse)
                 //Changing objects type to type needed from Post to ChildData
                 let arrayChildrens = model.data.children
+                
                 for object in arrayChildrens {
                     let child = object.data
                     self.posts.append(child)
+                    
                     print("!!START_OF_OBJECT!!",child,"!!END_OF_OBJECT!!")
                 }
+                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.activityIndicatorView.stopAnimating()
                 }
+                
              } catch let parsingError {
                 print("Error", parsingError)
            }
+            
         }
+        
         task.resume()
     }
+    
+        func addActivityIndicator(){
+            activityIndicatorView.backgroundColor = UIColor(named: "background_color")
+            tableView.backgroundView = activityIndicatorView
+            tableView.separatorStyle = .none
+        }
 }
 
 extension UIImage {
