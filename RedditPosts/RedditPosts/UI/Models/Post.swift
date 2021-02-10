@@ -11,7 +11,8 @@ import Foundation
 
 // MARK: - Post
 struct Post: Codable {
-    let kind: String
+    let after: String?
+    let before: String?
     let data: PostData
 }
 
@@ -24,26 +25,28 @@ struct PostData: Codable {
 
 // MARK: - Child
 struct Child: Codable {
-    let kind: String
     let data: ChildData
 }
 
 // MARK: - ChildData
 struct ChildData: Codable {
     let author, title: String
-    //High quality for PostImage
-//    let url_overridden_by_dest: String
-    //Middle quality post image
-    let url: String
+//    let url: String
+    let thumbnail: String
     let num_comments: Int
     let created_utc: Double?
-    
-//MARK: If you want use your own name for JSON porperties, you must use CodingKey which
-//MARK: replaces words needed.
-//    enum CodingKeys: String, CodingKey {
-//        case author = "author"
-//        case title
-//    }
+//    let preview: Preview
 }
-
-
+//MARK: Data for subreddit images
+//struct Preview: Codable{
+//    let images: [SourceImages]
+//}
+//struct SourceImages: Codable {
+//    let source: JSONImageSource
+//}
+//
+//struct JSONImageSource: Codable {
+//    let url: URL
+//    let width: Int
+//    let height: Int
+//}

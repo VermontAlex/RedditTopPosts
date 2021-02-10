@@ -30,8 +30,8 @@ class TableViewCell: UITableViewCell {
         titlePost.text = posts.title
         authorName.text = posts.author
         comments.text = String(posts.num_comments)
-        //Fullsize picture for post
-        postImage.downloaded(from: posts.url)
+        postImage.downloaded(from: posts.thumbnail)
+
         
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
