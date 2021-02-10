@@ -32,11 +32,11 @@ struct Child: Codable {
 struct ChildData: Codable {
     let author, title: String
     //High quality for PostImage
-    let url_overridden_by_dest: String
+//    let url_overridden_by_dest: String
+    //Middle quality post image
+    let url: String
     let num_comments: Int
-    let created_utc: Int
-    
-    
+    let created_utc: Double?
     
 //MARK: If you want use your own name for JSON porperties, you must use CodingKey which
 //MARK: replaces words needed.

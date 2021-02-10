@@ -30,24 +30,30 @@ class TableViewCell: UITableViewCell {
         titlePost.text = posts.title
         authorName.text = posts.author
         comments.text = String(posts.num_comments)
+        //Fullsize picture for post
+        postImage.downloaded(from: posts.url)
         
-        postImage.downloaded(from: posts.url_overridden_by_dest)
-        
-        let date = Date()
+        //Cuurent date for find difference between know and when post created
+        //dateNow - current date. formatter - format date to format needed
+        let dateNow = Date()
         let formatter = DateFormatter()
         formatter.timeZone = .current
         formatter.locale = .current
-        formatter.dateFormat = "mm/dd/yyyy"
-        hours.text = formatter.string(from: date)
+        formatter.dateFormat = "MMM d, h:mm a"
+        formatter.string(from: dateNow)
+        //Date when post created
+        guard let timeResult = posts.created_utc else {return}
+        let datePostCreated = Date(timeIntervalSince1970: timeResult)
+            let createdTime = DateFormatter()
+            createdTime.timeStyle = DateFormatter.Style.medium //Set time style
+            createdTime.dateStyle = DateFormatter.Style.medium //Set date style
+            createdTime.string(from: datePostCreated)
+        //Find the difference between two dates in Hours.
+        let diffComponents = Calendar.current.dateComponents([.hour], from: datePostCreated, to: dateNow)
         
-        
-        
-        
+        hours.text = String(diffComponents.hour ?? 0)
         }
-    
-    
     }
-
 
 //Convert type String to URL and download image.
 extension UIImageView {
