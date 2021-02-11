@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var posts = [ChildData]()
     var after: String?
     var loadMoreStatus = false
+    var bigImage: UIImage?
     
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     var myRefreshControl: UIRefreshControl = {
@@ -30,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.delegate              = self
         self.tableView.dataSource            = self
         tableView.refreshControl = myRefreshControl
+        
     }
     //Pull refresh Data
     @objc private func refreshData() {
@@ -53,9 +55,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
         cell.avatarImage.layer.cornerRadius = 20
+        cell.postImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
 
         return cell
     }
+    
+    @objc func imageTap() {
+        print("Tapped")
+        let storyboard = UIStoryboard(name: "Details", bundle: nil)
+        let newViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        self.present(newViewController, animated: true, completion: nil)
+     }
+
     
     //MARK:Infinite scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

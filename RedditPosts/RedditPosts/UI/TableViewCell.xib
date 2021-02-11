@@ -115,6 +115,7 @@
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
                         <rect key="frame" x="0.0" y="101" width="426" height="17.5"/>
+                        <gestureRecognizers/>
                         <imageReference key="image" image="camera.metering.unknown" catalog="system" renderingMode="template"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </imageView>

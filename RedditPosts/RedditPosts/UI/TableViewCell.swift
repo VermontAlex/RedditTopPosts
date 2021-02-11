@@ -9,6 +9,8 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
+
+    
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var hours: UILabel!
@@ -26,12 +28,14 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func fillCell(posts: ChildData) {
+    
+   func fillCell(posts: ChildData) {
         titlePost.text = posts.title
         authorName.text = posts.author
         comments.text = String(posts.num_comments)
-        postImage.downloaded(from: posts.thumbnail)
-
+        postImage.downloaded(from: posts.url)
+        postImage.isUserInteractionEnabled = true
+    
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()
