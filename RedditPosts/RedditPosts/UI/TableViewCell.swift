@@ -32,7 +32,6 @@ class TableViewCell: UITableViewCell {
         comments.text = String(posts.num_comments)
         postImage.downloaded(from: posts.thumbnail)
 
-        
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()

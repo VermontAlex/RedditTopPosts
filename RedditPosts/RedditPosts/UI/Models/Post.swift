@@ -11,8 +11,6 @@ import Foundation
 
 // MARK: - Post
 struct Post: Codable {
-    let after: String?
-    let before: String?
     let data: PostData
 }
 
@@ -20,6 +18,8 @@ struct Post: Codable {
 struct PostData: Codable {
     let modhash: String
     let dist: Int
+    let after: String?
+    let before: String?
     let children: [Child]
 }
 
@@ -33,6 +33,7 @@ struct ChildData: Codable {
     let author, title: String
 //    let url: String
     let thumbnail: String
+//    let url_overridden_by_dest: String
     let num_comments: Int
     let created_utc: Double?
 //    let preview: Preview

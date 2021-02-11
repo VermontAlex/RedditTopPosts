@@ -7,40 +7,38 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
     
     var posts = [ChildData]()
-//    var fetchingMore = false
-    let activityIndicatorView = UIActivityIndicatorView(style: .large)
-//    var myRefreshControl: UIRefreshControl = {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-//        return refreshControl
-//    }()
+    var after: String?
+    var loadMoreStatus = false
     
-//    var loadMoreStatus = false
+    let activityIndicatorView = UIActivityIndicatorView(style: .large)
+    var myRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addActivityIndicator()
         activityIndicatorView.startAnimating()
-        downloadJSON()
+        downloadJSON(refresh: true)
         self.tableView.delegate              = self
         self.tableView.dataSource            = self
-//        tableView.refreshControl = myRefreshControl
+        tableView.refreshControl = myRefreshControl
     }
-    
-//    @objc private func refreshData() {
-//        print("!!!!!!!!!!!START REFRESH!!!!!!!!")
-//        downloadJSON()
-//        print("!!!!!!!!!!!!!!!!!!!!!END REFRESH !!!!!!!!!!!!!")
-//    }
+    //Pull refresh Data
+    @objc private func refreshData() {
+        downloadJSON(refresh: true)
+    }
     
     func addActivityIndicator(){
         activityIndicatorView.backgroundColor = UIColor(named: "background_color")
+        activityIndicatorView.color = .white
         tableView.backgroundView = activityIndicatorView
         tableView.separatorStyle = .none
     }
@@ -60,23 +58,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     //MARK:Infinite scroll
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let currentOffset = scrollView.contentOffset.y
-//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-//        let deltaOffset = maximumOffset - currentOffset
-//
-//        if deltaOffset <= 0 {
-//            downloadJSON()
-//        }
-//    }
-    
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            if !loadMoreStatus {
+            downloadJSON(query: after)
+            }
+        }
+    }
+   
+    func formUrl(afterItemName: String?) -> URL {
+        let scheme = "https"
+        let host = "reddit.com"
+        var components = URLComponents()
+        components.host = host
+        components.scheme = scheme
+        components.path = "/top.json"
+        var queryItems = [URLQueryItem]()
+        if let itemName = afterItemName{
+            queryItems.append(URLQueryItem(name: "after", value: itemName))
+        }
+        components.queryItems = queryItems
+        
+        return components.url!
+    }
 }
 
 extension ViewController {
-    func downloadJSON(){
-        guard let url = URL(string: "https://www.reddit.com/top.json") else { return }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+    
+    func downloadJSON(refresh: Bool = false, query: String? = nil) {
+        loadMoreStatus = true
+        
+        if refresh {
+            myRefreshControl.beginRefreshing()
+        }
+        
+        let task = URLSession.shared.dataTask(with: formUrl(afterItemName: query)) { (data, response, error) in
+            DispatchQueue.main.async {
+            if refresh {
+                self.myRefreshControl.endRefreshing()
+            }
+                
         guard let dataResponse = data,
                   error == nil else {
                   print(error?.localizedDescription ?? "Response Error")
@@ -85,13 +107,12 @@ extension ViewController {
             do {
                 let decoder = JSONDecoder()
                 let model = try decoder.decode(Post.self, from: dataResponse)
+                self.loadMoreStatus = false
+                self.after = model.data.after
                 //Changing objects type to type needed from Post to ChildData
                 let arrayChildrens = model.data.children
-                
                 for object in arrayChildrens {
-                    let child = object.data
-                    self.posts.append(child)
-                    print("!!!!!!CHILD!!!!!",child,"!!!!!!!!!")
+                    self.posts.append(object.data)
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -100,7 +121,7 @@ extension ViewController {
              } catch let parsingError {
                 print("Error", parsingError)
            }
-        
+        }
         }
         task.resume()
     }
