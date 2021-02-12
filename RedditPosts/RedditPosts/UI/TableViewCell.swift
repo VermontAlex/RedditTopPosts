@@ -9,8 +9,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-
-    
+    @IBOutlet weak var button: Button!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var hours: UILabel!
@@ -26,6 +25,10 @@ class TableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        button.didTouchUpInside = nil
     }
     
     

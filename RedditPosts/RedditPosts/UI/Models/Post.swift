@@ -34,7 +34,7 @@ struct ChildData: Codable {
     //url which upload just images from post
     let url: String
     //Image from thumbnail full size
-    let url_overridden_by_dest: String
+//    let url_overridden_by_dest: String
     let num_comments: Int
     let created_utc: Double?
 }

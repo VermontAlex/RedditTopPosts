@@ -11,10 +11,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     var posts = [ChildData]()
+    var imagesArray = [String]()
     var after: String?
     var loadMoreStatus = false
-    var bigImage: UIImage?
     
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     var myRefreshControl: UIRefreshControl = {
@@ -33,6 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.refreshControl = myRefreshControl
         
     }
+    
     //Pull refresh Data
     @objc private func refreshData() {
         downloadJSON(refresh: true)
@@ -45,6 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.separatorStyle = .none
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -52,31 +56,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
+        
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
+        
+        imagesArray.append(posts[indexPath.row].url)
+        
         cell.avatarImage.layer.cornerRadius = 20
-        cell.postImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
+        
+        //Send url from Post url image to second VC.
+        cell.button.didTouchUpInside = { (sender) in
+            let storyboard = UIStoryboard(name: "Details", bundle: nil)
+            let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+            detailsVC.urlImage = self.posts[indexPath.row].url
+                    self.present(detailsVC, animated: true, completion: nil)
+            }
 
         return cell
     }
+}
     
-    @objc func imageTap() {
-        print("Tapped")
-        let storyboard = UIStoryboard(name: "Details", bundle: nil)
-        let newViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        self.present(newViewController, animated: true, completion: nil)
-     }
-
+    
     
     //MARK:Infinite scroll
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-            if !loadMoreStatus {
-            downloadJSON(query: after)
-            }
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let position = scrollView.contentOffset.y
+//        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+//            if !loadMoreStatus {
+//            downloadJSON(query: after)
+//                /* "t3_lh8axc"
+//                 "t3_lhji5d"    some
+//                 "t3_lhli0w"    some
+//
+//
+//                 */
+//            }
+//        }
+//    }
+
    
     func formUrl(afterItemName: String?) -> URL {
         let scheme = "https"
@@ -93,7 +110,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return components.url!
     }
-}
+
 
 extension ViewController {
     
@@ -106,6 +123,7 @@ extension ViewController {
         
         let task = URLSession.shared.dataTask(with: formUrl(afterItemName: query)) { (data, response, error) in
             DispatchQueue.main.async {
+                
             if refresh {
                 self.myRefreshControl.endRefreshing()
             }
@@ -126,6 +144,7 @@ extension ViewController {
                     self.posts.append(object.data)
                 }
                 DispatchQueue.main.async {
+//                    self.loadMoreStatus = false
                     self.tableView.reloadData()
                     self.activityIndicatorView.stopAnimating()
                 }
