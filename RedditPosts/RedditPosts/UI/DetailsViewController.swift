@@ -11,6 +11,7 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var imageFull: UIImageView?
     var urlImage : String?
+    var savingArray: [Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +19,16 @@ class DetailsViewController: UIViewController {
         imageFull?.downloaded(from: url)
     }
     
-    
-    
-    
-    
+    @IBAction func saveShareButton(_ sender: UIButton) {
+        if let image = imageFull?.image {
+            let alert = UIAlertController(title: "Saved", message: "Saved are done", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: nil)
+        UIImageWriteToSavedPhotosAlbum((image), nil, nil, nil)
+        } else {
+            let alert = UIAlertController(title: "No image to save", message: "", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: nil)
+        }
+}
 }
