@@ -21,6 +21,7 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        postImage.backgroundColor = .black
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,8 +38,10 @@ class TableViewCell: UITableViewCell {
         titlePost.text = posts.title
         authorName.text = posts.author
         comments.text = String(posts.num_comments)
-        postImage.downloaded(from: posts.url)
         postHint = posts.post_hint
+        if postHint == "image"{
+        postImage.downloaded(from: posts.thumbnail)
+        }
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()

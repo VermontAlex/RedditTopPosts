@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UITableViewDataSourcePrefetching {
     
     @IBOutlet weak var tableView: UITableView!
+    var count = 0
     
     var posts = [ChildData]()
     var image : UIImage?
@@ -33,6 +34,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.dataSource            = self
         self.tableView.prefetchDataSource    = self
         tableView.refreshControl = myRefreshControl
+        view.backgroundColor = .black
+        tableView.backgroundColor = .black
     }
     
     //Pull refresh Data
@@ -68,13 +71,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.present(detailsVC, animated: true, completion: nil)
         }
         }
+        //Sizing cell
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= posts.count - 3 && !loadMoreStatus{
+            if index.row == posts.count - 3 && !loadMoreStatus{
             downloadJSON(query: after)
+                self.count += 1
+                print("FETCHED", count)
             break
         }
     }

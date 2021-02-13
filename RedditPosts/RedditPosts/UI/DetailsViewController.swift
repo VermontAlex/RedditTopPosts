@@ -17,6 +17,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         guard let url = urlImage else { return }
         imageFull?.downloaded(from: url)
+        view.backgroundColor = .black
+        imageFull?.backgroundColor = .black
     }
     
     @IBAction func saveShareButton(_ sender: UIButton) {

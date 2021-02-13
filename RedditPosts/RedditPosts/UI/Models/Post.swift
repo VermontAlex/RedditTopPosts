@@ -19,7 +19,6 @@ struct PostData: Codable {
     let modhash: String
     let dist: Int
     let after: String?
-    let before: String?
     let children: [Child]
 }
 
@@ -33,6 +32,7 @@ struct ChildData: Codable {
     let author, title: String
     //url which upload just images from post
     let url: String
+    let thumbnail: String
     //Image from thumbnail full size
 //    let url_overridden_by_dest: String
     let num_comments: Int
