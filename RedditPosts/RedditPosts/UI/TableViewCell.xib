@@ -113,50 +113,37 @@
                             <constraint firstAttribute="trailing" secondItem="Tiu-EQ-wcN" secondAttribute="trailing" id="sX4-1S-W8y"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAV-xf-Z4L" userLabel="PostImageView">
-                        <rect key="frame" x="20" y="100" width="426" height="436"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.metering.unknown" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
-                                <rect key="frame" x="0.0" y="1" width="426" height="433.5"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="GKf-SS-sAa" secondAttribute="height" multiplier="213:218" id="omW-wz-HOW"/>
-                                </constraints>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7" customClass="Button" customModule="RedditPosts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="426" height="436"/>
-                            </button>
-                        </subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.metering.unknown" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
+                        <rect key="frame" x="0.0" y="101" width="466" height="433.5"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="7F7-Fc-9c7" firstAttribute="top" secondItem="mAV-xf-Z4L" secondAttribute="top" id="5Rj-c5-Uyj"/>
-                            <constraint firstAttribute="bottom" secondItem="7F7-Fc-9c7" secondAttribute="bottom" id="F49-MY-1vr"/>
-                            <constraint firstAttribute="trailing" secondItem="GKf-SS-sAa" secondAttribute="trailing" id="FT1-qE-LQx"/>
-                            <constraint firstAttribute="trailing" secondItem="7F7-Fc-9c7" secondAttribute="trailing" id="XR3-hd-Rig"/>
-                            <constraint firstAttribute="bottom" secondItem="GKf-SS-sAa" secondAttribute="bottom" id="f2G-au-dbv"/>
-                            <constraint firstItem="GKf-SS-sAa" firstAttribute="leading" secondItem="mAV-xf-Z4L" secondAttribute="leading" id="fkF-2B-qev"/>
-                            <constraint firstItem="7F7-Fc-9c7" firstAttribute="leading" secondItem="mAV-xf-Z4L" secondAttribute="leading" id="p8r-Nn-9sc"/>
-                            <constraint firstItem="GKf-SS-sAa" firstAttribute="top" secondItem="mAV-xf-Z4L" secondAttribute="top" id="xhd-Wm-MtO"/>
+                            <constraint firstAttribute="width" secondItem="GKf-SS-sAa" secondAttribute="height" multiplier="233:218" id="sSI-y4-yRm"/>
                         </constraints>
-                    </view>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7" customClass="Button" customModule="RedditPosts" customModuleProvider="target">
+                        <rect key="frame" x="20" y="100" width="426" height="436"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="mHX-QE-LrS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4KI-1D-VSS"/>
-                    <constraint firstItem="mAV-xf-Z4L" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="750-dW-1TV"/>
+                    <constraint firstItem="GKf-SS-sAa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-20" id="8aI-49-REB"/>
                     <constraint firstAttribute="trailing" secondItem="mHX-QE-LrS" secondAttribute="trailing" id="CGW-6V-H8p"/>
-                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="mAV-xf-Z4L" secondAttribute="bottom" id="EwZ-g9-yVq"/>
                     <constraint firstItem="pJ9-oe-dIw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Iju-zt-FbZ"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="KOs-E5-9u2"/>
                     <constraint firstAttribute="trailing" secondItem="pJ9-oe-dIw" secondAttribute="trailing" id="Me4-sv-6jK"/>
-                    <constraint firstItem="mAV-xf-Z4L" firstAttribute="top" secondItem="pJ9-oe-dIw" secondAttribute="bottom" id="N0d-Xe-pv2"/>
                     <constraint firstItem="pJ9-oe-dIw" firstAttribute="top" secondItem="eD8-a9-M4F" secondAttribute="bottom" id="Nmw-Nb-Y0L"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GKf-SS-sAa" secondAttribute="trailing" constant="-20" id="P2F-b8-6SR"/>
+                    <constraint firstItem="GKf-SS-sAa" firstAttribute="top" secondItem="pJ9-oe-dIw" secondAttribute="bottom" id="WFd-cS-icI"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="XfB-J7-jld"/>
+                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="7F7-Fc-9c7" secondAttribute="bottom" id="aZG-Tu-wg1"/>
                     <constraint firstAttribute="trailing" secondItem="eD8-a9-M4F" secondAttribute="trailing" id="dav-P0-yc4"/>
                     <constraint firstItem="eD8-a9-M4F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="djk-pq-6Ne"/>
                     <constraint firstAttribute="bottom" secondItem="mHX-QE-LrS" secondAttribute="bottom" id="orw-gS-z32"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="top" secondItem="pJ9-oe-dIw" secondAttribute="bottom" id="pjS-m9-RUd"/>
                     <constraint firstItem="eD8-a9-M4F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pzA-bp-YWG"/>
-                    <constraint firstItem="mAV-xf-Z4L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="q7q-cD-4Jf"/>
+                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="GKf-SS-sAa" secondAttribute="bottom" id="uYl-9f-eUu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

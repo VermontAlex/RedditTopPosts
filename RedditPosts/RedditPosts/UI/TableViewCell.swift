@@ -22,6 +22,7 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         postImage.backgroundColor = .black
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
