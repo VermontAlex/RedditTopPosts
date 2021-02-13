@@ -75,7 +75,6 @@
 				35053FBF25D1579B00777E35 /* UI */,
 				35053FAA25D151BF00777E35 /* AppDelegate.swift */,
 				35053FAC25D151BF00777E35 /* SceneDelegate.swift */,
-				35053FAE25D151BF00777E35 /* ViewController.swift */,
 				35053FB025D151BF00777E35 /* Main.storyboard */,
 				35053FB325D151C200777E35 /* Assets.xcassets */,
 				35053FB525D151C200777E35 /* LaunchScreen.storyboard */,
@@ -88,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				35053FC225D157EA00777E35 /* Models */,
+				35053FAE25D151BF00777E35 /* ViewController.swift */,
 				35053FCE25D15EFB00777E35 /* TableViewCell.swift */,
 				35053FCF25D15EFB00777E35 /* TableViewCell.xib */,
 				352FF51425D5320200DFE5E4 /* ActivityIndicatorTableViewCell.swift */,

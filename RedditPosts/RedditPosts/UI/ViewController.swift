@@ -7,21 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UITableViewDataSourcePrefetching {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
     
     var posts = [ChildData]()
     var imagesArray = [String]()
     var after: String?
     var loadMoreStatus = false
+    var counter = 0
     
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     var myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.tintColor = .white
         return refreshControl
     }()
     
@@ -32,8 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         downloadJSON(refresh: true)
         self.tableView.delegate              = self
         self.tableView.dataSource            = self
+        self.tableView.prefetchDataSource = self
         tableView.refreshControl = myRefreshControl
-        
     }
     
     //Pull refresh Data
@@ -48,7 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.separatorStyle = .none
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -59,11 +58,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
-        
         imagesArray.append(posts[indexPath.row].url)
-        
         cell.avatarImage.layer.cornerRadius = 20
-        
         //Send url from Post url image to second VC.
         cell.button.didTouchUpInside = { (sender) in
             let storyboard = UIStoryboard(name: "Details", bundle: nil)
@@ -71,30 +67,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             detailsVC.urlImage = self.posts[indexPath.row].url
                     self.present(detailsVC, animated: true, completion: nil)
             }
-
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for index in indexPaths {
+            if index.row >= posts.count - 3 && !loadMoreStatus{
+            downloadJSON(query: after)
+            break
+        }
+    }
+ }
 }
     
-    
-    
-    //MARK:Infinite scroll
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let position = scrollView.contentOffset.y
-//        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
-//            if !loadMoreStatus {
-//            downloadJSON(query: after)
-//                /* "t3_lh8axc"
-//                 "t3_lhji5d"    some
-//                 "t3_lhli0w"    some
-//
-//
-//                 */
-//            }
-//        }
-//    }
-
-   
     func formUrl(afterItemName: String?) -> URL {
         let scheme = "https"
         let host = "reddit.com"
@@ -116,18 +101,14 @@ extension ViewController {
     
     func downloadJSON(refresh: Bool = false, query: String? = nil) {
         loadMoreStatus = true
-        
         if refresh {
             myRefreshControl.beginRefreshing()
         }
-        
         let task = URLSession.shared.dataTask(with: formUrl(afterItemName: query)) { (data, response, error) in
             DispatchQueue.main.async {
-                
             if refresh {
                 self.myRefreshControl.endRefreshing()
             }
-                
         guard let dataResponse = data,
                   error == nil else {
                   print(error?.localizedDescription ?? "Response Error")
@@ -136,7 +117,6 @@ extension ViewController {
             do {
                 let decoder = JSONDecoder()
                 let model = try decoder.decode(Post.self, from: dataResponse)
-                self.loadMoreStatus = false
                 self.after = model.data.after
                 //Changing objects type to type needed from Post to ChildData
                 let arrayChildrens = model.data.children
@@ -144,7 +124,7 @@ extension ViewController {
                     self.posts.append(object.data)
                 }
                 DispatchQueue.main.async {
-//                    self.loadMoreStatus = false
+                    self.loadMoreStatus = false
                     self.tableView.reloadData()
                     self.activityIndicatorView.stopAnimating()
                 }
