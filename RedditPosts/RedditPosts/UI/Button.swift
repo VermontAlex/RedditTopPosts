@@ -25,5 +25,6 @@ class Button: UIButton {
         if let handler = didTouchUpInside {
             handler(self)
         }
+        
     }
 }

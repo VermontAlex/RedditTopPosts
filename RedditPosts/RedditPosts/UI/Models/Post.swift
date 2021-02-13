@@ -37,4 +37,5 @@ struct ChildData: Codable {
 //    let url_overridden_by_dest: String
     let num_comments: Int
     let created_utc: Double?
+    let post_hint: String?
 }

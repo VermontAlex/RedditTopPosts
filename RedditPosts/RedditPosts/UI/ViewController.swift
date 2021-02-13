@@ -12,10 +12,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [ChildData]()
-    var imagesArray = [String]()
+    var image : UIImage?
     var after: String?
     var loadMoreStatus = false
-    var counter = 0
     
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     var myRefreshControl: UIRefreshControl = {
@@ -32,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         downloadJSON(refresh: true)
         self.tableView.delegate              = self
         self.tableView.dataSource            = self
-        self.tableView.prefetchDataSource = self
+        self.tableView.prefetchDataSource    = self
         tableView.refreshControl = myRefreshControl
     }
     
@@ -58,15 +57,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
-        imagesArray.append(posts[indexPath.row].url)
         cell.avatarImage.layer.cornerRadius = 20
         //Send url from Post url image to second VC.
+        //If we have Image in Post Image open second VC if not, well then no)
+        if cell.postHint == "image" {
         cell.button.didTouchUpInside = { (sender) in
             let storyboard = UIStoryboard(name: "Details", bundle: nil)
             let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
             detailsVC.urlImage = self.posts[indexPath.row].url
                     self.present(detailsVC, animated: true, completion: nil)
-            }
+        }
+        }
         return cell
     }
     

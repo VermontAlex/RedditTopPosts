@@ -16,6 +16,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var titlePost: UILabel!
     @IBOutlet weak var comments: UILabel!
     @IBOutlet weak var postImage: UIImageView!
+    var postHint: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,8 +38,7 @@ class TableViewCell: UITableViewCell {
         authorName.text = posts.author
         comments.text = String(posts.num_comments)
         postImage.downloaded(from: posts.url)
-        postImage.isUserInteractionEnabled = true
-    
+        postHint = posts.post_hint
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()
