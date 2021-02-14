@@ -113,15 +113,15 @@
                             <constraint firstAttribute="trailing" secondItem="Tiu-EQ-wcN" secondAttribute="trailing" id="sX4-1S-W8y"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.metering.unknown" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
-                        <rect key="frame" x="0.0" y="101" width="466" height="433.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
+                        <rect key="frame" x="0.0" y="100" width="466" height="436"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="GKf-SS-sAa" secondAttribute="height" multiplier="233:218" id="sSI-y4-yRm"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7" customClass="Button" customModule="RedditPosts" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7">
                         <rect key="frame" x="20" y="100" width="426" height="436"/>
                     </button>
                 </subviews>
@@ -160,7 +160,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="camera.metering.unknown" catalog="system" width="128" height="93"/>
         <image name="comments" width="512" height="512"/>
         <image name="reddit-2" width="512" height="512"/>
         <systemColor name="labelColor">

@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var imageFull: UIImageView?
     var urlImage : String?
     var savingArray: [Any]?
@@ -16,7 +16,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let url = urlImage else { return }
-        imageFull?.downloaded(from: url)
+        imageFull?.download(from: url)
         view.backgroundColor = .black
         imageFull?.backgroundColor = .black
     }
@@ -26,11 +26,11 @@ class DetailsViewController: UIViewController {
             let alert = UIAlertController(title: "Saved", message: "Saved are done", preferredStyle: .alert)
             present(alert, animated: true, completion: nil)
             alert.dismiss(animated: true, completion: nil)
-        UIImageWriteToSavedPhotosAlbum((image), nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum((image), nil, nil, nil)
         } else {
             let alert = UIAlertController(title: "No image to save", message: "", preferredStyle: .alert)
             present(alert, animated: true, completion: nil)
             alert.dismiss(animated: true, completion: nil)
         }
-}
+    }
 }

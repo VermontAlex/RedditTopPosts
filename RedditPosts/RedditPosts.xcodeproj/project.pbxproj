@@ -18,7 +18,6 @@
 		35053FDC25D1673000777E35 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35053FDB25D1673000777E35 /* Post.swift */; };
 		352FF53C25D58D1800DFE5E4 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352FF53B25D58D1800DFE5E4 /* DetailsViewController.swift */; };
 		352FF54025D58DC900DFE5E4 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352FF53F25D58DC900DFE5E4 /* Details.storyboard */; };
-		355715C625D6BB2500AB2ED3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355715C525D6BB2500AB2ED3 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		35053FDB25D1673000777E35 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		352FF53B25D58D1800DFE5E4 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		352FF53F25D58DC900DFE5E4 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
-		355715C525D6BB2500AB2ED3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +86,6 @@
 				35053FCF25D15EFB00777E35 /* TableViewCell.xib */,
 				352FF53B25D58D1800DFE5E4 /* DetailsViewController.swift */,
 				352FF53F25D58DC900DFE5E4 /* Details.storyboard */,
-				355715C525D6BB2500AB2ED3 /* Button.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -176,7 +173,6 @@
 				35053FAF25D151BF00777E35 /* ViewController.swift in Sources */,
 				35053FD025D15EFB00777E35 /* TableViewCell.swift in Sources */,
 				35053FAB25D151BF00777E35 /* AppDelegate.swift in Sources */,
-				355715C625D6BB2500AB2ED3 /* Button.swift in Sources */,
 				35053FAD25D151BF00777E35 /* SceneDelegate.swift in Sources */,
 				352FF53C25D58D1800DFE5E4 /* DetailsViewController.swift in Sources */,
 				35053FDC25D1673000777E35 /* Post.swift in Sources */,
