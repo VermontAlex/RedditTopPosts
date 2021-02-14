@@ -36,7 +36,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: TableViewCell.identifier)
-
     }
     
     //Pull refresh Data
@@ -122,6 +121,9 @@ extension ViewController {
                     let model = try decoder.decode(Post.self, from: dataResponse)
                     self.after = model.data.after
                     //Changing objects type to type needed from Post to ChildData
+                    if refresh {
+                    self.posts.removeAll()
+                    }
                     let arrayChildrens = model.data.children
                     for object in arrayChildrens {
                         self.posts.append(object.data)

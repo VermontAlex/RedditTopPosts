@@ -45,7 +45,6 @@ class TableViewCell: UITableViewCell {
         comments.text = nil
     }
     
-    
     func fillCell(posts: ChildData) {
         titlePost.text = posts.title
         authorName.text = posts.author
