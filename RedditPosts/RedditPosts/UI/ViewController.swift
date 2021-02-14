@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var count = 0
     
     var posts = [ChildData]()
     var image : UIImage?
@@ -29,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         addActivityIndicator()
         activityIndicatorView.startAnimating()
-        downloadJSON(refresh: true)
+        downloadJSON()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.refreshControl = myRefreshControl
@@ -37,6 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundColor = .black
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: TableViewCell.identifier)
+
     }
     
     //Pull refresh Data
@@ -48,6 +48,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         activityIndicatorView.backgroundColor = UIColor(named: "background_color")
         activityIndicatorView.color = .white
         tableView.backgroundView = activityIndicatorView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if posts[indexPath.row].post_hint == "image" {
+            return 100+60+view.frame.size.width
+        } else {
+            return 100+60
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
