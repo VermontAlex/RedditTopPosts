@@ -17,7 +17,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var comments: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     
-    static let identifier = "PostCustomTableViewCell"
+    static let identifier = "PostCustomTableViewCell" //TODO: usually identifier should match class name
     var didTapImage: (() -> ())?
     
     @IBAction func didPushImage() {
@@ -55,7 +55,7 @@ class TableViewCell: UITableViewCell {
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()
-        let formatter = DateFormatter()
+        let formatter = DateFormatter() //TODO: it's expensive to create DateFormatter everytime on fillCell. can you create it only once?
         formatter.timeZone = .current
         formatter.locale = .current
         formatter.dateFormat = "MMM d, h:mm a"
@@ -63,7 +63,7 @@ class TableViewCell: UITableViewCell {
         //Date when post created
         guard let timeResult = posts.created_utc else {return}
         let datePostCreated = Date(timeIntervalSince1970: timeResult)
-        let createdTime = DateFormatter()
+        let createdTime = DateFormatter() //TODO: same here
         createdTime.timeStyle = DateFormatter.Style.medium //Set time style
         createdTime.dateStyle = DateFormatter.Style.medium //Set date style
         createdTime.string(from: datePostCreated)
@@ -75,6 +75,7 @@ class TableViewCell: UITableViewCell {
     }
 }
 
+//TODO: it's better to have separate file for extensions
 //Convert type String to URL and download image.
 extension UIImageView {
     func download(from url: URL) {

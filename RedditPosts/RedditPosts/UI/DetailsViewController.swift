@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    @IBOutlet weak var imageFull: UIImageView?
+    @IBOutlet weak var imageFull: UIImageView? //TODO: strange var name
     var urlImage : String?
     var savingArray: [Any]?
     

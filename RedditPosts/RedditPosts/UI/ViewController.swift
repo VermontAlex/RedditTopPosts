@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundView = activityIndicatorView
     }
     
+    //TODO: in interview you will be asked if possible any other ways to set height for cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if posts[indexPath.row].post_hint == "image" {
             return 100+60+view.frame.size.width
@@ -68,7 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Send url from Post url image to second VC.
         //If we have Image in Post Image open second VC if not, well then no)
         if posts[indexPath.row].post_hint == "image" {
-            cell.didTapImage = { [weak self] in
+            cell.didTapImage = { [weak self] in //TODO: this function too heavy to be here. lets move to `func openDetail(post: ChildData)`
                 let storyboard = UIStoryboard(name: "Details", bundle: nil)
                 let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
                 detailsVC.urlImage = self?.posts[indexPath.row].url
