@@ -26,6 +26,6 @@ struct ChildData: Codable {
     let url: String
     let thumbnail: String
     let num_comments: Int
-    let created_utc: Double?
-    let post_hint: String?
+    let created_utc: Double? //TODO: names with '_' are not good in Swift. Please use JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
+    let post_hint: String? //TODO: should it be enum? what cases possible?
 }
