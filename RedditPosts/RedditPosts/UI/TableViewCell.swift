@@ -9,6 +9,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
+    
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var authorName: UILabel!
@@ -16,6 +17,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var titlePost: UILabel!
     @IBOutlet weak var comments: UILabel!
     @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postView: UIView!
+    @IBOutlet weak var heightImageConstraint: NSLayoutConstraint!
     
     static let identifier = "PostCustomTableViewCell"
     var didTapImage: (() -> ())?
@@ -27,7 +30,7 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        postImage.backgroundColor = .black
+//        postImage.backgroundColor = .black
         button.addTarget(self, action: #selector(didPushImage), for: .touchUpInside)
     }
 
@@ -51,7 +54,9 @@ class TableViewCell: UITableViewCell {
         comments.text = String(posts.num_comments)
         if posts.post_hint == "image" {
             postImage.download(from: posts.thumbnail)
+            heightImageConstraint
         }
+
         //Cuurent date for find difference between know and when post created
         //dateNow - current date. formatter - format date to format needed
         let dateNow = Date()
@@ -72,6 +77,17 @@ class TableViewCell: UITableViewCell {
         
         hours.text = String(diffComponents.hour ?? 0)
         avatarImage.layer.cornerRadius = 20
+    }
+    
+    func configureEmptyCell() {
+        postImage.translatesAutoresizingMaskIntoConstraints = false
+        postImage.leftAnchor.constraint(equalTo: postView.leftAnchor, constant: 0).isActive = true
+        postImage.rightAnchor.constraint(equalTo: postView.rightAnchor, constant: 0).isActive = true
+        postImage.topAnchor.constraint(equalTo: postView.topAnchor, constant: 0).isActive = true
+        postImage.bottomAnchor.constraint(equalTo: postView.bottomAnchor, constant: 0).isActive = true
+        postImage.widthAnchor.constraint(equalTo: postView.widthAnchor).isActive = true
+        postView.heightAnchor.constraint(equalToConstant: postImage.image?.size.height ?? 0).isActive = true
+        postImage.centerYAnchor.constraint(equalTo: postView.centerYAnchor).isActive = true
     }
 }
 

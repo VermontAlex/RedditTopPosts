@@ -5,14 +5,15 @@
 //  Created by Oleksandr Oliynyk on 08.02.2021.
 //
 
+
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     var posts = [ChildData]()
-    var image : UIImage?
     var after: String?
     var loadMoreStatus = false
     
@@ -38,6 +39,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: TableViewCell.identifier)
     }
     
+   
+    
+    
     //Pull refresh Data
     @objc private func refreshData() {
         downloadJSON(refresh: true)
@@ -49,13 +53,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.backgroundView = activityIndicatorView
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if posts[indexPath.row].post_hint == "image" {
-            return 100+60+view.frame.size.width
-        } else {
-            return 100+60
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if posts[indexPath.row].post_hint == "image" {
+//            return 100+60+view.frame.size.width
+//        } else {
+//            return 100+60
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -65,6 +69,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         //Filling cell
         cell.fillCell(posts: posts[indexPath.row])
+
+//        cell.configureEmptyCell()
+       
         //Send url from Post url image to second VC.
         //If we have Image in Post Image open second VC if not, well then no)
         if posts[indexPath.row].post_hint == "image" {
