@@ -54,7 +54,9 @@ class TableViewCell: UITableViewCell {
         comments.text = String(posts.num_comments)
         if posts.post_hint == "image" {
             postImage.download(from: posts.thumbnail)
-            heightImageConstraint
+            let value = CGFloat(posts.thumbnail_height)
+            print("!", value)
+            heightImageConstraint.constant = value
         }
 
         //Cuurent date for find difference between know and when post created
@@ -79,16 +81,16 @@ class TableViewCell: UITableViewCell {
         avatarImage.layer.cornerRadius = 20
     }
     
-    func configureEmptyCell() {
-        postImage.translatesAutoresizingMaskIntoConstraints = false
-        postImage.leftAnchor.constraint(equalTo: postView.leftAnchor, constant: 0).isActive = true
-        postImage.rightAnchor.constraint(equalTo: postView.rightAnchor, constant: 0).isActive = true
-        postImage.topAnchor.constraint(equalTo: postView.topAnchor, constant: 0).isActive = true
-        postImage.bottomAnchor.constraint(equalTo: postView.bottomAnchor, constant: 0).isActive = true
-        postImage.widthAnchor.constraint(equalTo: postView.widthAnchor).isActive = true
-        postView.heightAnchor.constraint(equalToConstant: postImage.image?.size.height ?? 0).isActive = true
-        postImage.centerYAnchor.constraint(equalTo: postView.centerYAnchor).isActive = true
-    }
+//    func configureEmptyCell() {
+//        postImage.translatesAutoresizingMaskIntoConstraints = false
+//        postImage.leftAnchor.constraint(equalTo: postView.leftAnchor, constant: 0).isActive = true
+//        postImage.rightAnchor.constraint(equalTo: postView.rightAnchor, constant: 0).isActive = true
+//        postImage.topAnchor.constraint(equalTo: postView.topAnchor, constant: 0).isActive = true
+//        postImage.bottomAnchor.constraint(equalTo: postView.bottomAnchor, constant: 0).isActive = true
+//        postImage.widthAnchor.constraint(equalTo: postView.widthAnchor).isActive = true
+//        postView.heightAnchor.constraint(equalToConstant: postImage.image?.size.height ?? 0).isActive = true
+//        postImage.centerYAnchor.constraint(equalTo: postView.centerYAnchor).isActive = true
+//    }
 }
 
 //Convert type String to URL and download image.

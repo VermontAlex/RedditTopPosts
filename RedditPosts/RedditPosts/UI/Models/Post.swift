@@ -25,6 +25,7 @@ struct ChildData: Codable {
     //url which upload just images from post
     let url: String
     let thumbnail: String
+    let thumbnail_height: Int
     let num_comments: Int
     let created_utc: Double?
     let post_hint: String?

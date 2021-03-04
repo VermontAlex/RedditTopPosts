@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="RedditPosts" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="466" height="596"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="182" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="RedditPosts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="466" height="182"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="GeneralContentView">
-                <rect key="frame" x="0.0" y="0.0" width="466" height="596"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="GeneralContentView">
+                <rect key="frame" x="0.0" y="0.0" width="466" height="182"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD8-a9-M4F" userLabel="DescriptionVIew">
@@ -78,7 +78,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHX-QE-LrS" userLabel="FooterView">
-                        <rect key="frame" x="0.0" y="536" width="466" height="60"/>
+                        <rect key="frame" x="0.0" y="100" width="466" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcb-f1-JgY">
                                 <rect key="frame" x="365" y="3" width="61" height="54"/>
@@ -113,49 +113,37 @@
                             <constraint firstAttribute="trailing" secondItem="Tiu-EQ-wcN" secondAttribute="trailing" id="sX4-1S-W8y"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-FN-DnW">
-                        <rect key="frame" x="20" y="100" width="426" height="436"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7">
-                                <rect key="frame" x="0.0" y="0.0" width="426" height="436"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
-                                <rect key="frame" x="0.0" y="0.0" width="426" height="436"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="436" id="DhN-RZ-Qac"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-Fc-9c7">
+                        <rect key="frame" x="20" y="60" width="426" height="40"/>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-SS-sAa">
+                        <rect key="frame" x="20" y="100" width="426" height="0.0"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="GKf-SS-sAa" firstAttribute="top" secondItem="B8a-FN-DnW" secondAttribute="top" id="11l-RE-Xsk"/>
-                            <constraint firstItem="7F7-Fc-9c7" firstAttribute="top" secondItem="B8a-FN-DnW" secondAttribute="top" id="Gg8-od-gpl"/>
-                            <constraint firstItem="GKf-SS-sAa" firstAttribute="leading" secondItem="B8a-FN-DnW" secondAttribute="leading" id="LbV-wC-sMZ"/>
-                            <constraint firstAttribute="bottom" secondItem="GKf-SS-sAa" secondAttribute="bottom" id="OuS-Is-lUc"/>
-                            <constraint firstAttribute="trailing" secondItem="7F7-Fc-9c7" secondAttribute="trailing" id="dfp-xW-9Sr"/>
-                            <constraint firstAttribute="bottom" secondItem="7F7-Fc-9c7" secondAttribute="bottom" id="fPs-gk-fY5"/>
-                            <constraint firstAttribute="trailing" secondItem="GKf-SS-sAa" secondAttribute="trailing" id="gRU-e0-MMn"/>
-                            <constraint firstItem="7F7-Fc-9c7" firstAttribute="leading" secondItem="B8a-FN-DnW" secondAttribute="leading" id="wIh-Xk-YUg"/>
+                            <constraint firstAttribute="height" id="twc-Xj-NVJ"/>
                         </constraints>
-                    </view>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="mHX-QE-LrS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4KI-1D-VSS"/>
-                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="B8a-FN-DnW" secondAttribute="bottom" id="4fW-1Z-OLI"/>
+                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="GKf-SS-sAa" secondAttribute="bottom" id="6x3-ry-t9G"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="7eh-jf-ZCH"/>
+                    <constraint firstItem="mHX-QE-LrS" firstAttribute="top" secondItem="7F7-Fc-9c7" secondAttribute="bottom" id="7tv-zy-1lA"/>
                     <constraint firstAttribute="trailing" secondItem="mHX-QE-LrS" secondAttribute="trailing" id="CGW-6V-H8p"/>
                     <constraint firstItem="pJ9-oe-dIw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Iju-zt-FbZ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="B8a-FN-DnW" secondAttribute="trailing" id="J3i-S7-FsI"/>
                     <constraint firstAttribute="trailing" secondItem="pJ9-oe-dIw" secondAttribute="trailing" id="Me4-sv-6jK"/>
+                    <constraint firstItem="GKf-SS-sAa" firstAttribute="top" secondItem="pJ9-oe-dIw" secondAttribute="bottom" id="NRX-3f-QL2"/>
                     <constraint firstItem="pJ9-oe-dIw" firstAttribute="top" secondItem="eD8-a9-M4F" secondAttribute="bottom" id="Nmw-Nb-Y0L"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Vyb-nV-51P"/>
                     <constraint firstAttribute="trailing" secondItem="eD8-a9-M4F" secondAttribute="trailing" id="dav-P0-yc4"/>
                     <constraint firstItem="eD8-a9-M4F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="djk-pq-6Ne"/>
-                    <constraint firstItem="B8a-FN-DnW" firstAttribute="top" secondItem="pJ9-oe-dIw" secondAttribute="bottom" id="eoF-zS-nnl"/>
-                    <constraint firstItem="B8a-FN-DnW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mhS-Cd-fOZ"/>
+                    <constraint firstItem="GKf-SS-sAa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hav-aW-Ped"/>
                     <constraint firstAttribute="bottom" secondItem="mHX-QE-LrS" secondAttribute="bottom" id="orw-gS-z32"/>
                     <constraint firstItem="eD8-a9-M4F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pzA-bp-YWG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GKf-SS-sAa" secondAttribute="trailing" id="qb3-3y-fs7"/>
+                    <constraint firstItem="7F7-Fc-9c7" firstAttribute="top" secondItem="eD8-a9-M4F" secondAttribute="bottom" id="x1r-Sz-dR0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -164,13 +152,12 @@
                 <outlet property="avatarImage" destination="O05-ew-5GN" id="F9Y-nv-m7K"/>
                 <outlet property="button" destination="7F7-Fc-9c7" id="asQ-dY-X5g"/>
                 <outlet property="comments" destination="Pcb-f1-JgY" id="Kya-fk-c0f"/>
-                <outlet property="heightImageConstraint" destination="DhN-RZ-Qac" id="Tj2-qu-Ptn"/>
+                <outlet property="heightImageConstraint" destination="twc-Xj-NVJ" id="0Kd-Gl-wQg"/>
                 <outlet property="hours" destination="m3V-gT-0gl" id="vxt-ln-x2u"/>
                 <outlet property="postImage" destination="GKf-SS-sAa" id="tiy-sO-m8Q"/>
-                <outlet property="postView" destination="B8a-FN-DnW" id="8Ce-Ye-IVf"/>
                 <outlet property="titlePost" destination="qgH-v5-TlI" id="m7S-Jy-YEV"/>
             </connections>
-            <point key="canvasLocation" x="353.62318840579712" y="54.241071428571423"/>
+            <point key="canvasLocation" x="353.62318840579712" y="-84.375"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -178,9 +165,6 @@
         <image name="reddit-2" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
